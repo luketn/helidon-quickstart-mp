@@ -8,13 +8,8 @@ import java.util.logging.LogManager;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        // load logging configuration
-        LogManager.getLogManager().readConfiguration(
-                Main.class.getResourceAsStream("/logging.properties"));
+        io.helidon.Main.main(args);
 
-        Server server = Server.create();
-        server.start();
-
-        System.out.println("http://localhost:" + server.port() + "/greet");
+        System.out.println("http://localhost:8080/greet");
     }
 }

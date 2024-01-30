@@ -69,7 +69,7 @@ class MainTest {
                 .path("simple-greet")
                 .request()
                 .get(Message.class);
-        assertThat(message.getMessage(), is("Hello World!"));
+        assertThat(message.message(), is("Hi There World!"));
     }
                 
     @Test
@@ -78,7 +78,7 @@ class MainTest {
                 .path("greet/Joe")
                 .request()
                 .get(Message.class);
-        assertThat(jsonMessage.getMessage(), is("Hello Joe!"));
+        assertThat(jsonMessage.message(), is("Hi There Joe!"));
 
         try (Response r = target
                 .path("greet/greeting")
@@ -91,7 +91,7 @@ class MainTest {
                 .path("greet/Jose")
                 .request()
                 .get(Message.class);
-        assertThat(jsonMessage.getMessage(), is("Hola Jose!"));
+        assertThat(jsonMessage.message(), is("Hola Jose!"));
     }
                 
 }
