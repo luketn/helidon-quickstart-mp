@@ -45,8 +45,7 @@ public class SimpleGreetResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Message getDefaultMessage() {
         String msg = String.format("%s %s!", message, "World");
-        Message message = new Message();
-        message.setMessage(msg);
+        Message message = new Message(msg, null);
         return message;
     }
 

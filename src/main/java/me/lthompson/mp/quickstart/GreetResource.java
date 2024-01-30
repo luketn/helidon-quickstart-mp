@@ -97,19 +97,18 @@ public class GreetResource {
                     description = "JSON did not contain setting for 'greeting'")})
     public Response updateGreeting(Message message) {
 
-        if (message.getGreeting() == null || message.getGreeting().isEmpty()) {
-            Message error = new Message();
-            error.setMessage("No greeting provided");
+        if (message.greeting() == null || message.greeting().isEmpty()) {
+            Message error = new Message("No greeting provided", null);
             return Response.status(Response.Status.BAD_REQUEST).entity(error).build();
         }
 
-        greetingProvider.setMessage(message.getGreeting());
+        greetingProvider.setMessage(message.greeting());
         return Response.status(Response.Status.NO_CONTENT).build();
     }
 
     private Message createResponse(String who) {
         String msg = String.format("%s %s!", greetingProvider.getMessage(), who);
 
-        return new Message(msg);
+        return new Message(msg, null);
     }
 }
